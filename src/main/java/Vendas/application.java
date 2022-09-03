@@ -12,9 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class application {
 
     @Autowired
-    // injetando o valor do bean nesse atributo
     @Qualifier("applicationName")
-    public String applicationName;
+    private String applicationName;
 
     @GetMapping("/hello")
     public String helloWorld()
@@ -23,7 +22,6 @@ public class application {
     }
 
     public static void main(String[] args) {
-
-                        SpringApplication.run(application.class,args);
+              SpringApplication.run(application.class,args);
     }
 }
