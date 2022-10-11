@@ -2,9 +2,11 @@ package Vendas;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 
 
 @Configuration
+// @Profile("nome do ambiente")
 public class MinhaConfiguration {
 
     @Bean(name = "applicationName")
