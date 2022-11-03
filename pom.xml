@@ -4,10 +4,9 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.example</groupId>
-    <artifactId>Sprintboot</artifactId>
+    <groupId>io.github.dougllasfps</groupId>
+    <artifactId>vendas</artifactId>
     <version>1.0-SNAPSHOT</version>
-
 
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -19,7 +18,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
-         </dependency>
+        </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -36,6 +35,7 @@
             <artifactId>h2</artifactId>
         </dependency>
 
+
     </dependencies>
 
     <build>
@@ -46,5 +46,6 @@
             </plugin>
         </plugins>
     </build>
+
 
 </project>
