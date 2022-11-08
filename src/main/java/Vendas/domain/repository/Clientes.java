@@ -1,8 +1,7 @@
-package Vendas.domain.repositorio;
+package Vendas.domain.repository;
 
 
 import Vendas.domain.entity.Cliente;
-import org.hibernate.validator.constraints.ParameterScriptAssert;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -20,6 +19,9 @@ public interface Clientes extends JpaRepository<Cliente, Integer> {
     @Query ("delete from Cliente c where c.nome = :nome")
     @Modifying
     void deletebyNome (@Param("nome") String nome);
+
+    @Query ( "select c from Cliente c left join fetch c.pedidos where c.id = :id")
+    Cliente findClienteFetchPedidos ( @Param("id") Integer id);
 
 }
 
