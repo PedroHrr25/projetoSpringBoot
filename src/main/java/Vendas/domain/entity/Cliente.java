@@ -1,15 +1,12 @@
 package Vendas.domain.entity;
 
 
-import net.bytebuddy.dynamic.loading.ClassReloadingStrategy;
-import net.bytebuddy.dynamic.loading.InjectionClassLoader;
-import org.hibernate.boot.registry.selector.spi.StrategyCreator;
-
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 // @Table = para utlizar com um nome de tabela diferente ou schema
-@Table (name = "cliente")
+@Table(name = "cliente")
 public class Cliente {
 
     // a função de primary key e auto imcremento
@@ -19,6 +16,17 @@ public class Cliente {
     private Integer id;
     @Column(name = "nome", length = 100)
     private String nome;
+
+    @OneToMany(mappedBy = "cliente")
+    private Set<Pedido> pedidos;
+
+    public Set<Pedido> getPedidos() {
+        return pedidos;
+    }
+
+    public void setPedidos(Set<Pedido> pedidos) {
+        this.pedidos = pedidos;
+    }
 
     public Cliente(Integer id, String nome) {
         this.id = id;
@@ -47,6 +55,7 @@ public class Cliente {
     public void setNome(String nome) {
         this.nome = nome;
     }
+
     @Override
     public String toString() {
         return "Cliente{" +

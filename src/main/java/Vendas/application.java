@@ -2,7 +2,6 @@ package Vendas;
 
 import Vendas.domain.entity.Cliente;
 import Vendas.domain.repositorio.Clientes;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -14,20 +13,23 @@ import org.springframework.context.annotation.Bean;
 public class application {
 
     @Bean
-    public  CommandLineRunner init (@Autowired Clientes clientes){
+    public CommandLineRunner init (@Autowired Clientes clientes){
         return args -> {
             System.out.println("Salvando clientes");
             clientes.save(new Cliente("Fulano"));
             clientes.save(new Cliente("Outro Cliente"));
+            clientes.findAll().forEach(System.out::println);
 
-            boolean existe = clientes.existsBynome("Dougllas");
-            System.out.println("existe um cliente com o nome Dougllas? " + existe);
+            clientes.findByNomeLike("ful").forEach(System.out::println);
+
+
+
 
 
         };
     }
 
     public static void main(String[] args) {
-        SpringApplication.run(application.class, args);
+        SpringApplication.run(application.class,args);
     }
 }

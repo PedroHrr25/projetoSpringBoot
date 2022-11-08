@@ -1,14 +1,41 @@
 package Vendas.domain.entity;
 
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.List;
 
+@Entity
+@Table(name = "Pedido")
 public class Pedido {
 
-    private  Integer id;
-    private  Cliente cliente;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
+
+    private Integer id;
+
+    //relacionamento de tabela  varios pedidos para um cliente
+    @ManyToOne
+    @JoinColumn(name = "cliente_id")
+    private Cliente cliente;
+
+    @Column(name = "data_pedido")
     private LocalDate dataPedido;
+
+    @Column(name = "total", length = 20, precision = 2)
     private BigDecimal total;
+
+    @OneToMany(mappedBy = "pedido")
+    private List<ItemPedido> itens;
+
+    public List<ItemPedido> getItens() {
+        return itens;
+    }
+
+    public void setItens(List<ItemPedido> itens) {
+        this.itens = itens;
+    }
 
     public Integer getId() {
         return id;
