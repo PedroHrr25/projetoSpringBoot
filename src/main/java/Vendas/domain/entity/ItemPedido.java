@@ -1,10 +1,13 @@
 package Vendas.domain.entity;
 
 
+import lombok.Data;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "item_pedido")
+@Data
 public class ItemPedido {
 
 
