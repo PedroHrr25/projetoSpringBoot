@@ -1,9 +1,16 @@
 package Vendas.rest.dto;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.math.BigDecimal;
 import java.util.List;
 
-public class PedidosDTO {
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class PedidoDTO {
 
     private Integer Cliente;
     private BigDecimal total;

@@ -2,6 +2,7 @@ package Vendas.domain.entity;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Data;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -9,6 +10,7 @@ import java.util.Set;
 @Entity
 // @Table = para utlizar com um nome de tabela diferente ou schema
 @Table(name = "cliente")
+@Data
 public class Cliente {
 
     // a função de primary key e auto imcremento
