@@ -1,5 +1,7 @@
 package Vendas.domain.entity;
 
+import Vendas.domain.enums.StatusPedido;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -25,6 +27,18 @@ public class Pedido {
 
     @Column(name = "total", scale = 2, precision = 20)
     private BigDecimal total;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "status")
+    private StatusPedido status;
+
+    public StatusPedido getStatus() {
+        return status;
+    }
+
+    public void setStatus(StatusPedido status) {
+        this.status = status;
+    }
 
     @OneToMany(mappedBy = "pedido")
     private List<ItemPedido> itens;
