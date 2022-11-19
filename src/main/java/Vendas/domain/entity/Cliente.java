@@ -3,8 +3,10 @@ package Vendas.domain.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
+import org.hibernate.validator.constraints.br.CPF;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import java.util.Set;
 
 @Entity
@@ -19,7 +21,13 @@ public class Cliente {
     @Column(name = "ID")
     private Integer id;
     @Column(name = "nome", length = 100)
+    @NotEmpty(message = "Campo nome é Obrigatorio")
     private String nome;
+
+    @Column(name = "cpf", length = 11)
+    @NotEmpty(message = "Campo de cpf é obrigatorio")
+    @CPF(message = "informe um CPF valido")
+    private String cpf;
 
     // ignorar propriedades nulas
     @JsonIgnore
