@@ -3,6 +3,7 @@ package Vendas.service.impl;
 
 import Vendas.domain.entity.Usuario;
 import Vendas.domain.repository.UsuarioRepository;
+import Vendas.exception.SenhaInvalidaException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -27,6 +28,14 @@ public class UsuarioServiceImpl implements UserDetailsService {
         return repository.save(usuario);
     }
 
+public UserDetails autenticar (Usuario usuario){
+    UserDetails user = loadUserByUsername(usuario.getLogin());
+    boolean senhabatem  = encoder.matches(usuario.getSenha(), user.getPassword());
+    if (senhabatem){
+        return user;
+    }
+    throw new SenhaInvalidaException();
+}
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
