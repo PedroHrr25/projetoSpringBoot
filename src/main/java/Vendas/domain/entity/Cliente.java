@@ -17,7 +17,7 @@ public class Cliente {
 
     // a função de primary key e auto imcremento
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
     private Integer id;
     @Column(name = "nome", length = 100)
