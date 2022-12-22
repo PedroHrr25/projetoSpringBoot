@@ -2,6 +2,10 @@ package Vendas.rest.controller;
 
 import Vendas.domain.entity.Cliente;
 import Vendas.domain.repository.Clientes;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.http.HttpStatus;
@@ -13,6 +17,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/clientes")
+@Api("Api Cliente")
 public class ClienteController {
 
     private Clientes clientes;
@@ -22,6 +27,10 @@ public class ClienteController {
     }
 
     @GetMapping("{id}")
+    @ApiOperation("obter detalhes do cliente")
+    @ApiResponses({
+            @ApiResponse(code = 200, message = "cliente encontrado"),
+    @ApiResponse(code = 404, message = "cliente nao encontrado")})
     public Cliente getClienteById(@PathVariable Integer id) {
         return clientes
                 .findById(id)
